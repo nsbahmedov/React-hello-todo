@@ -38,27 +38,37 @@ const TodoList = () => {
     const dispatch = useDispatch()
 
     const allTodos = useSelector(state => getAllTodos(state))
-   
-    
+
+
 
     let displayTodos = allTodos.map(td => (
         <NewTodo level={td.level} key={td.id}>
             <p>{td.text}</p>
             <div className='buttons'>
+                <input
+                    type='checkbox'
+                    onChange={(e) => {
+                        let element = e.target.parentElement.parentElement
+                        element.style.textDecoration = e.target.checked
+                            ? 'line-through'
+                            : null
+                        element.style.color = e.target.checked
+                            ? 'grey'
+                            : null
+                    }}
+                />
                 <RemoveBtn
-                onClick={() =>{ 
+                    onClick={() => {
                         let finded = allTodos.find(todo => todo.id === td.id)
                         let index = allTodos.indexOf(finded)
                         dispatch(removeTodo(index))
-                }}
+                    }}
                 >X</RemoveBtn>
             </div>
         </NewTodo>
     ))
 
     if (allTodos.length > 0) {
-
-         
         return (
             <div>
                 {displayTodos}

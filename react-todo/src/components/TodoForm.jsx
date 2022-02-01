@@ -11,7 +11,7 @@ const TodoForm = () => {
   const [level, setLevel] = useState('low')
   const btnDisabled = todo.length > 0 ? false : true
 
-  
+
 
   const handleSubmit = (e) => {
     if (todo !== '') {
@@ -35,16 +35,16 @@ const TodoForm = () => {
           onChange={e => setLevel(e.target.value)}
           value={level}
         >
-            <option value={'low'} >
-              just do it
-            </option>
-            <option value={'middle'}>
-              remember to do
-            </option>
-            <option value={'high'}>
-              it's really important
-            </option>
-     
+          <option value={'low'} >
+            just do it
+          </option>
+          <option value={'middle'}>
+            remember to do
+          </option>
+          <option value={'high'}>
+            it's really important
+          </option>
+
         </Select>
       </FormTop>
       <Button disabled={btnDisabled}>Add to list</Button>
